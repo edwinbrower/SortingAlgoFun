@@ -8,8 +8,9 @@
     swap([1, 2, 3, 4, 5], 0, 4) should return [5, 2, 3, 4, 1] 
 */
 function swap(arr, first, second) {
-  // FIX ME
-
+  var temp = arr[first];
+  arr[first] = arr[second];
+  arr[second] = temp;
   return arr;
 }
 
