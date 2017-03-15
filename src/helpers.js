@@ -22,7 +22,27 @@ function swap(arr, first, second) {
 */
 function merge(left, right) {
   // FIX ME
-  return left.concat(right);
+  var result = [];
+  // return left.concat(right);
+  var lIndex = 0;
+  var rIndex = 0;
+
+  while (lIndex < left.length || rIndex < right.length) {
+    if (left[lIndex] < right[rIndex]) {
+      result.push(left[lIndex]);
+      lIndex++;
+    } else if (right[rIndex] < left[lIndex]) {
+      result.push(right[rIndex]);
+      rIndex++;
+    } else if (lIndex === left.length) {
+      result.push(right[rIndex]);
+      rIndex++
+    } else {
+      result.push(left[lIndex]);
+      lIndex++
+    }
+  }
+  return result;
 }
 
 /* 
@@ -41,7 +61,27 @@ function merge(left, right) {
 */
 function partition(arr, left, right) {
   // FIX ME
-  return Math.floor((left + right) / 2);
+  // return Math.floor((left + right) / 2);
+  var pivotIndex = left;
+  var pivotVal = arr[left];
+  while (left < right) {
+    while (arr[left] <= pivotVal) {
+      left++;
+    }
+    if (left > right) {
+      break;
+    }
+    while(arr[right] > pivotVal) {
+      right--;
+    }
+    if (left < right) {
+      swap(arr, left, right);
+    } else {
+      break;
+    }
+  }
+  swap(arr, right, pivotIndex);
+  return right;
 }
 
 module.exports = {
