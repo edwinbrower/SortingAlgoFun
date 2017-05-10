@@ -2,7 +2,7 @@ var merge = require('./helpers.js').merge;
 // var merge = require('./helpers.solution.js').merge;
 
 function mergeSort(arr, lo, hi) {
-  var result = arr.slice(arr);
+  // var result = arr.slice(arr);
   lo = lo === undefined ? 0 : lo;
   hi = hi === undefined ? arr.length - 1 : hi;
 
@@ -20,7 +20,7 @@ function mergeSort(arr, lo, hi) {
   var right = mergeSort(arr, mid + 1, hi);
 
   // Merge the sorted halves back together
-  result = merge(left, right);
+  var result = merge(left, right);
   return result;
 }
 

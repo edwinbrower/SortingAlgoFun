@@ -8,8 +8,9 @@
     swap([1, 2, 3, 4, 5], 0, 4) should return [5, 2, 3, 4, 1] 
 */
 function swap(arr, first, second) {
-  // FIX ME
-
+  var temp = arr[second];
+  arr[second] = arr[first];
+  arr[first] = temp;
   return arr;
 }
 
@@ -21,7 +22,39 @@ function swap(arr, first, second) {
 */
 function merge(left, right) {
   // FIX ME
-  return left.concat(right);
+  // return left.concat(right);
+
+  var result = [];
+  var leftIndex = 0;
+  var rightIndex = 0;
+
+  while (leftIndex < left.length || rightIndex < right.length) {
+    // If current val in the left array is less than the current val in the right array
+    // OR if right index === right length
+    // push left value into the result
+    if (left[leftIndex] < right[rightIndex] || rightIndex === right.length) {
+      result.push(left[leftIndex++]);
+    } else {
+      result.push(right[rightIndex++]);
+    }
+
+    // // vice versa
+    // else if (right[rightIndex] <= left[leftIndex] || leftIndex === left.length) {
+    //   result.push(right[rightIndex++]);
+    // }
+
+    // // If there are no more values left in the left array
+    // // push the current val in the right array into the result
+    // else if (leftIndex === left.length) {
+    //   result.push(right[rightIndex++]);
+    // }
+
+    // // Otherwise, push the value into the left array
+    // else {
+    //   result.push(left[leftIndex++]);
+    // }
+  }
+  return result;
 }
 
 /* 
@@ -40,7 +73,33 @@ function merge(left, right) {
 */
 function partition(arr, left, right) {
   // FIX ME
-  return Math.floor((left + right) / 2);
+  // return Math.floor((left + right) / 2);
+  var pivotIndex = left;
+  var pivotVal = arr[left];
+  while (left < right) {
+    // Move right until you find a value greater than the pivot
+    while (arr[left] <= pivotVal) {
+      left++;
+    }
+
+    if (left > right) {
+      break;
+    }
+    // Move left until you find a value less than or equal to the pivot
+    while (arr[right] > pivotVal) {
+      right--;
+    }
+
+    if (left < right) {
+      swap(arr, left, right);
+    } else {
+      break;
+    }
+  }
+
+  swap(arr, right, pivotIndex);
+
+  return right;
 }
 
 module.exports = {
