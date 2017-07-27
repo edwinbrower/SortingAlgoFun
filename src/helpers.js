@@ -37,22 +37,6 @@ function merge(left, right) {
     } else {
       result.push(right[rightIndex++]);
     }
-
-    // // vice versa
-    // else if (right[rightIndex] <= left[leftIndex] || leftIndex === left.length) {
-    //   result.push(right[rightIndex++]);
-    // }
-
-    // // If there are no more values left in the left array
-    // // push the current val in the right array into the result
-    // else if (leftIndex === left.length) {
-    //   result.push(right[rightIndex++]);
-    // }
-
-    // // Otherwise, push the value into the left array
-    // else {
-    //   result.push(left[leftIndex++]);
-    // }
   }
   return result;
 }
